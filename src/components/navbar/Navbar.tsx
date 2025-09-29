@@ -27,7 +27,7 @@ function Navbar() {
                     ))
                 }
             </ul>
-            <h2 className="flex items-center">logo</h2>
+            <img src="logo.jpg" alt="" />
         </div>
     </Container>
     

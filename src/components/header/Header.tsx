@@ -3,7 +3,7 @@ import Container from "../container/Container";
 
 function Header() {
   return (
-    <div className="bg-[url('/header.avif')] bg-cover bg-center w-full h-[100vh] ">
+    <div className="bg-[url('/header.avif')] bg-cover bg-center w-full h-[100vh] mb-30">
       <Container>
         <h1 className="text-white text-8xl font-bold flex flex-col pt-50">
             <span>Explore the world</span>
@@ -14,7 +14,7 @@ function Header() {
             <span>gravida. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. Arcu risus quis varius</span>
             <span>quam quisque id diam. Aliquet enim tortor at auctor urna nunc id</span>
         </p>
-        <button className="bg-black text-white text-lg px-10 py-4 rounded cursor-pointer">Start Now</button>
+        <button className="bg-black text-white text-lg px-10 py-4 rounded cursor-pointer hover:bg-white hover:text-black">Start Now</button>
 
         <div className="grid grid-cols-3 text-white gap-10 pt-30">
             <div>
