@@ -2,6 +2,7 @@ import { useState } from "react";
 import Container from "../../components/container/Container";
 import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
+import { Toaster, toast } from "react-hot-toast";
 
 function CreateBlog() {
         
@@ -9,8 +10,8 @@ function CreateBlog() {
     const [description , setDescription] = useState('');
     const [image , setImage] = useState<string>('');
 
-    const handleCreateBlog = ()=>{
-        fetch("http://localhost:8000/blogs" , {
+    const handleCreateBlog = async ()=>{
+        const response = await fetch("http://localhost:8000/blogs" , {
             method: "POST",
             body: JSON.stringify({
                 "id": Math.floor(Math.random() * 100).toString(),
@@ -19,6 +20,18 @@ function CreateBlog() {
                 "image": image
             })
         })
+
+        if(response.ok){
+            toast.success("Blog submit successfully");
+            setTitle("");
+            setDescription("");
+            setImage("");
+        }
+        else{
+            toast.error("Blog not submit");
+        }
+        
+        
     };
 
     
@@ -45,7 +58,7 @@ function CreateBlog() {
                 <button onClick={handleCreateBlog} className="text-2xl font-medium bg-cyan-700 py-5 px-10 rounded text-cyan-100 cursor-pointer w-full transition duration-300 hover:bg-cyan-100 hover:text-cyan-700">Create Blog</button>
             </div>
         </Container>
-
+         <Toaster position="top-right" reverseOrder={false} />
         <Footer />
     </div>
   )
