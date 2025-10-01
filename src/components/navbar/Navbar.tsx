@@ -14,6 +14,10 @@ function Navbar() {
             link: "/blogs"
         },
         {
+            name: "Create Blog",
+            link: "/createBlog"
+        },
+        {
             name: "About",
             link: "/about"
         }

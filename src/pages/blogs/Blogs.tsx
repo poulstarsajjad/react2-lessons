@@ -5,6 +5,7 @@ import Footer from "../../components/footer/Footer";
 import Navbar from "../../components/navbar/Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Loading from "../../components/loading/Loading";
 
 export interface Iblogs{
   id: number | string;
@@ -16,15 +17,21 @@ export interface Iblogs{
 function Blogs() {
 
   const [blogs , setBlogs] = useState<Iblogs[]>([]);
+  const [isLoading , setIsLoading] = useState(false);
 
   useEffect(()=>{
+    setIsLoading(true);
     axios.get("http://localhost:8000/blogs")
-    .then((result)=> setBlogs(result.data))
+    .then((result)=> {
+      setBlogs(result.data);
+      setIsLoading(false);
+    })
   } , []);
 
   return (
     <div>
         <Navbar />
+
         <div className="bg-[url('/header3.jpg')] bg-cover bg-center w-full h-[60vh] flex justify-center relative">
          <div className="absolute inset-0 bg-black/30"></div>
           <div className="flex flex-col justify-center items-center relative">
@@ -40,15 +47,14 @@ function Blogs() {
         <Container>
           <div className="grid grid-cols-2 justify-between gap-10 mt-20 mb-30">
             {
-              blogs.map((blog)=>(
-                <Link key={blog.id} to={`/blogs/${blog.id}`}>
-                  <BlogsItem {...blog} />
-                </Link>
+              isLoading ? <Loading /> : (
+                blogs.map((blog)=>(
+                  <Link key={blog.id} to={`/blogs/${blog.id}`}>
+                    <BlogsItem {...blog} />
+                  </Link>
               ))
+              )
             }
-            
-            
-            
           </div>
         </Container>
 
