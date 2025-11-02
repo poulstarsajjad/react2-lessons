@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
 
-
+  
 function Navbar() {
   
     const navs = [
