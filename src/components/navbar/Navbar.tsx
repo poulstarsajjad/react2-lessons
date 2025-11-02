@@ -3,7 +3,7 @@ import Container from "../container/Container";
 
 
 function Navbar() {
-
+  
     const navs = [
         {
             name: "Home",
